@@ -2,7 +2,6 @@ from tkinter import*
 import random
 import time
 import datetime
-from fpdf import FPDF
 
 root=Tk()
 root.geometry("1600x8000")
@@ -13,20 +12,15 @@ Tops.pack(side=TOP)
 
 f1=Frame(root,width=800,height=700,relief=SUNKEN)
 f1.pack(side=LEFT)
-
-#=================================================================================
-#                  TIME
-#================================================================================
 localtime=time.asctime(time.localtime(time.time()))
 
 lblInfo=Label(Tops,font=('helvetica',50,'bold'),text="FOOD JUNCTION",fg="Black",bd=10,anchor='w')
 lblInfo.grid(row=0,column=0)
-
 lblInfo=Label(Tops,font=('arial',20,'bold'),text=localtime,fg="Steel Blue",bd=10,anchor='w')
 lblInfo.grid(row=1,column=0)
 
 def Ref():
-    x=random.randint(10908,500876)
+    x=random.randint(22528,865876)
     randomRef=str(x)
     rand.set(randomRef)
 
@@ -69,12 +63,12 @@ def Ref():
         CoD=float(Drinks.get())
 
                    
-    CostofFries =CoFries * 140
-    CostofDrinks=CoD * 65
-    CostofNoodles = CoNoodles* 90
-    CostofSoup = CoSoup * 140
-    CostBurger = CoBurger* 260
-    CostSandwich=CoSandwich * 300
+    CostofFries =CoFries * 40
+    CostofDrinks=CoD * 25
+    CostofNoodles = CoNoodles* 40
+    CostofSoup = CoSoup * 40
+    CostBurger = CoBurger* 60
+    CostSandwich=CoSandwich * 30
 
     CostofMeal= "Rs", str('%.2f' % (CostofFries+CostofDrinks+CostofNoodles+CostofSoup+CostBurger+CostSandwich))
 
@@ -94,29 +88,7 @@ def Ref():
     Cost.set(CostofMeal)
     Tax.set(PaidTax)
     SubTotal.set(CostofMeal)
-    Total.set(OverAllCost) 
-   
-    pdf = FPDF() 
-  
-# Add a page 
-    pdf.add_page() 
-  
-# set style and size of font  
-# that you want in the pdf 
-    pdf.set_font("Arial", size = 15) 
-  
-# create a cell 
-    pdf.cell(200, 10, txt = "GeeksforGeeks",  
-         ln = 1, align = 'C') 
-  
-# add another cell 
-    pdf.cell(200, 10, txt = "Total:"+str(OverAllCost), 
-         ln = 2, align = 'C')
-
-    pdf.cell(200,10,txt="Fies: "+"140 x "+str(int(CoFries))+"="+"RS."+str(CostofFries),ln=2,align='C')
-  
-# save the pdf with name .pdf 
-    pdf.output("BILL"+str(randomRef)+".pdf")  
+    Total.set(OverAllCost)  
     
 def qExit():
     root.destroy()
@@ -134,8 +106,6 @@ def Reset():
     Cost.set("")
     Burger.set("")
     Sandwich.set("")
-    
-#====================================Restaraunt Info 1===========================================================
 rand = StringVar()
 Fries=StringVar()
 Noodles=StringVar()
@@ -149,8 +119,6 @@ Cost=StringVar()
 Burger=StringVar()
 Sandwich=StringVar()
 
-
-
 lblReference= Label(f1, font=('arial', 16, 'bold'),text="Reference",bd=16,anchor="w")
 lblReference.grid(row=0, column=0)
 txtReference=Entry(f1, font=('arial',16,'bold'),textvariable=rand,bd=10,insertwidth=4,bg="powder blue",justify='right')
@@ -161,12 +129,10 @@ lblFries.grid(row=1, column=0)
 txtFries=Entry(f1, font=('arial',16,'bold'),textvariable=Fries,bd=10,insertwidth=4,bg="powder blue",justify='right')
 txtFries.grid(row=1,column=1)
 
-
 lblNoodles= Label(f1, font=('arial', 16, 'bold'),text="Noodles",bd=16,anchor="w")
 lblNoodles.grid(row=2, column=0)
 txtNoodles=Entry(f1, font=('arial',16,'bold'),textvariable=Noodles,bd=10,insertwidth=4,bg="powder blue",justify='right')
 txtNoodles.grid(row=2,column=1)
-
 
 lblSoup= Label(f1, font=('arial', 16, 'bold'),text="Soup",bd=16,anchor="w")
 lblSoup.grid(row=3, column=0)
@@ -182,10 +148,6 @@ lblSandwich= Label(f1, font=('arial', 16, 'bold'),text="Sandwich",bd=16,anchor="
 lblSandwich.grid(row=5, column=0)
 txtSandwich=Entry(f1, font=('arial',16,'bold'),textvariable=Sandwich,bd=10,insertwidth=4,bg="powder blue",justify='right')
 txtSandwich.grid(row=5,column=1)
-
-#============================================================================================================
-#                                RESTAURANT INFO 2
-#========================================================================================
 
 lblDrinks= Label(f1, font=('arial', 16, 'bold'),text="Drinks",bd=16,anchor="w")
 lblDrinks.grid(row=0, column=2)
@@ -218,15 +180,9 @@ lblTotalCost= Label(f1, font=('arial', 16, 'bold'),text="Total Cost",bd=16,ancho
 lblTotalCost.grid(row=5, column=2)
 txtTotalCost=Entry(f1, font=('arial',16,'bold'),textvariable=Total,bd=10,insertwidth=4,bg="powder blue",justify='right')
 txtTotalCost.grid(row=5,column=3)
-
-#==========================================Buttons==========================================================================================
 btnTotal=Button(f1,padx=16,pady=8,bd=16,fg="black",font=('arial',16,'bold'),width=10,text="Total",bg="powder blue",command=Ref).grid(row=7,column=1)
 
 btnReset=Button(f1,padx=16,pady=8,bd=16,fg="black",font=('arial',16,'bold'),width=10,text="Reset",bg="powder blue",command=Reset).grid(row=7,column=2)
 
 btnExit=Button(f1,padx=16,pady=8,bd=16,fg="black",font=('arial',16,'bold'),width=10,text="Exit",bg="powder blue",command=qExit).grid(row=7,column=3)
-
-
 root.mainloop()
-
-
