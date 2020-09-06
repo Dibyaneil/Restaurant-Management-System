@@ -6,7 +6,7 @@ The project “Restaurant Management System” is implemented to reduce the manu
 ### Features:
 * The system manages and records various food varieties ordered by customers according to price and calculates the total amount of money.
 * The system automatically generates invoice for each and every transaction instantly.
-* This program has been made in a user friendly interface. 
+* This program has been made in an user friendly interface. 
 * It’s easy for a person to handle the transaction system.
 * Helpful for both manager and customer as it provides hassle-free, simple billing system.
 
